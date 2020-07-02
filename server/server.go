@@ -59,6 +59,7 @@ func (s *Server) RegisterConnection(connect *proto.Connect, stream proto.ChatSer
 	}
 
 	s.Connection = append(s.Connection, connection)
+	grpcLog.Infof("A user connected to stream(%v) with id(%v)", connection.stream, connection.id)
 
 	return <-connection.error
 }

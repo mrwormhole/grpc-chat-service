@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+    chat-service-app:
+        restart: always
+        ports: 
+            - 8080:8080
+        build:
+            dockerfile: Dockerfile
+            context: .
+
