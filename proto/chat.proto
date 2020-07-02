@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package proto;
+
+message User {
+    string id = 1;
+    string username = 2;
+}
+
+message ChatMessage {
+    string id = 1;
+    User user = 2;
+    string message = 3;
+    string timestamp = 4;
+}
+
+message Connect {
+    User user = 1;
+    bool active = 2;
+}
+
+message Close {}
+
+service ChatService {
+    rpc RegisterConnection(Connect) returns (stream ChatMessage); // server streaming RPC
+    rpc BroadcastChatMessage(ChatMessage) returns (Close); // unary RPC
+}
